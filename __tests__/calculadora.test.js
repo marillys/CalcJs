@@ -10,3 +10,14 @@ test('somar 2 + 3' , () => {
 
     expect(resultadoObtido).toBe(resultadoEsperado)
 })
+
+test('subtrair 50 - 10', () => {
+    const num1 = 50;
+    const num2 = 10;
+    const resultadoEsperado = 40;
+
+    const subtrairDoisNumeros = calculadora.subtrairDoisNumeros
+    const resultadoObtido = subtrairDoisNumeros(num1,num2);
+
+    expect(resultadoObtido).toBe(resultadoEsperado)
+})
