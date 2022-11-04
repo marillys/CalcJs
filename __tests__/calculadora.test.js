@@ -1,4 +1,8 @@
-const calculadora = require("../src/calculadora")
+//Importação das funções da calculadora
+const calculadora = require("../src/calculadora");
+
+//Importação do arquivo de massa para o teste de divisão
+const massaDivisaoJSON = require("../vendors/massaUnidade.js");
 
 test('somar 2 + 3' , () => {
     const numeroA = 2;
@@ -61,3 +65,11 @@ test.each(massaDivisao)('Dividir %f / %f', (num1, num2, resultadoEsperado) => {
     const dividirDoisNumeros = calculadora.dividirDoisNumeros;
     expect(dividirDoisNumeros(num1,num2)).toBe(resultadoEsperado);
 })
+
+test.each(massaDivisaoJSON.array.map(item => [
+    item.num1,
+    item.num2,
+    item.resultadoEsperado
+]))("Divida %f / %f", (num1,num2,resultadoEsperado) => {
+    expect(calculadora.dividirDoisNumeros(num1,num2)).toBe(resultadoEsperado);
+});
